@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Project documentation (private)
+VISAO_CO_AUTORIA.md
+RESEARCH.md
+PROGRESS.md
+INTERFACE_PREVIEW.md
