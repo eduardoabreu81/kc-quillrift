@@ -4,7 +4,7 @@ import { TipTapEditor } from './components/editor/TipTapEditor';
 import { ArchitectPanel } from './components/agents/ArchitectPanel';
 import { BiblePanel } from './components/bible/BiblePanel';
 import { NavigatorPanel } from './components/navigator/NavigatorPanel';
-import { TeamPanel } from './components/team/TeamPanel';
+import { WorkflowPanel } from './components/workflow/WorkflowPanel';
 import { cn } from './lib/utils';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <main className="flex-1 flex flex-col overflow-hidden">
         {currentView === 'architect' && <ArchitectView />}
         {currentView === 'bible' && <BibleView />}
-        {currentView === 'team' && <TeamView />}
+        {currentView === 'workflow' && <WorkflowView />}
         {currentView === 'navigator' && <NavigatorView />}
         {currentView === 'workbench' && <WorkbenchView />}
       </main>
@@ -93,27 +93,27 @@ function BibleView() {
   );
 }
 
-// View da Team (Agent Teams)
-function TeamView() {
+// View do Workflow (Orquestração de Agents)
+function WorkflowView() {
   return (
     <div className="flex h-full">
       <div className="w-[360px] border-r border-[var(--color-border)] bg-[var(--color-bg)]">
-        <TeamPanel />
+        <WorkflowPanel />
       </div>
       <div className="flex-1 flex flex-col bg-[var(--color-bg-elevated)]">
         <header className="flex items-center justify-between px-6 py-4 border-b border-[var(--color-border)]">
           <div>
-            <h1 className="text-lg font-semibold text-[var(--color-text)]">Agent Team</h1>
+            <h1 className="text-lg font-semibold text-[var(--color-text)]">Workflow Engine</h1>
             <p className="text-xs text-[var(--color-text-muted)]">
-              Coordene múltiplos agents trabalhando em paralelo
+              Cadeias de agents para tarefas complexas de escrita
             </p>
           </div>
         </header>
         <div className="flex-1 flex items-center justify-center text-[var(--color-text-muted)]">
           <div className="text-center">
-            <span className="text-6xl block mb-4">👥</span>
-            <p className="text-sm">Crie tasks e delegue para subagents.<br/>
-              Comunicação direta entre teammates.</p>
+            <span className="text-6xl block mb-4">⚡</span>
+            <p className="text-sm">Selecione um workflow à esquerda.<br/>
+              Múltiplos agents trabalharão em sequência.</p>
           </div>
         </div>
       </div>

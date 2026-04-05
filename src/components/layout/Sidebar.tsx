@@ -13,7 +13,7 @@ import {
   MoreHorizontal,
   Sparkles,
   LayoutGrid,
-  Users
+  Zap
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -24,9 +24,9 @@ interface SidebarProps {
 const menuItems = [
   { id: 'architect', label: 'Architect', icon: Sparkles, highlight: true },
   { id: 'bible', label: 'Bible', icon: BookOpen },
-  { id: 'team', label: 'Team', icon: Users },
-  { id: 'workbench', label: 'Projetos', icon: LayoutGrid },
+  { id: 'workflow', label: 'Workflows', icon: Zap },
   { id: 'navigator', label: 'Navegador', icon: Map },
+  { id: 'workbench', label: 'Projetos', icon: LayoutGrid },
   { id: 'compendium', label: 'Compêndio', icon: FileText },
   { id: 'workshop', label: 'Oficina', icon: Bot },
   { id: 'settings', label: 'Configurações', icon: Settings },
