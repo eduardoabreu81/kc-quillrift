@@ -12,7 +12,8 @@ import {
   FileText,
   MoreHorizontal,
   Sparkles,
-  LayoutGrid
+  LayoutGrid,
+  Users
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -23,6 +24,7 @@ interface SidebarProps {
 const menuItems = [
   { id: 'architect', label: 'Architect', icon: Sparkles, highlight: true },
   { id: 'bible', label: 'Bible', icon: BookOpen },
+  { id: 'team', label: 'Team', icon: Users },
   { id: 'workbench', label: 'Projetos', icon: LayoutGrid },
   { id: 'navigator', label: 'Navegador', icon: Map },
   { id: 'compendium', label: 'Compêndio', icon: FileText },
