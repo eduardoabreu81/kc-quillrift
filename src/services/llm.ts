@@ -176,7 +176,7 @@ export class LLMService {
               if (chunk) {
                 yield chunk;
               }
-            } catch (e) {
+            } catch {
               // Ignore parse errors for incomplete chunks
             }
           }

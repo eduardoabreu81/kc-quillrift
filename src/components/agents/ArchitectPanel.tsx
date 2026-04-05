@@ -142,7 +142,7 @@ Regras:
               <label className="block text-xs text-[var(--color-text-muted)] mb-1">Provedor</label>
               <select
                 value={settings.provider}
-                onChange={(e) => updateSettings({ provider: e.target.value as any })}
+                onChange={(e) => updateSettings({ provider: e.target.value as 'openrouter' | 'ollama' | 'openai' | 'anthropic' })}
                 className="w-full p-2 text-sm rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)]"
               >
                 <option value="openrouter">OpenRouter (recomendado)</option>

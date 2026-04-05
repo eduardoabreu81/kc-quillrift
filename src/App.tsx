@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { Upload } from 'lucide-react';
 import { Sidebar } from './components/layout/Sidebar';
 import { TipTapEditor } from './components/editor/TipTapEditor';
 import { ArchitectPanel } from './components/agents/ArchitectPanel';
 import { BiblePanel } from './components/bible/BiblePanel';
 import { NavigatorPanel } from './components/navigator/NavigatorPanel';
 import { WorkflowPanel } from './components/workflow/WorkflowPanel';
+import { ImportModal } from './components/import/ImportModal';
+import type { ImportResult } from './services/import';
 import { cn } from './lib/utils';
 
 function App() {
@@ -231,17 +234,54 @@ function NavigatorView() {
 
 // View do Workbench (lista de projetos)
 function WorkbenchView() {
+  const [isImportOpen, setIsImportOpen] = useState(false);
+  const [lastImport, setLastImport] = useState<ImportResult | null>(null);
+
+  const handleImportComplete = (result: ImportResult) => {
+    setLastImport(result);
+    console.log('Importação completa:', result);
+    // Aqui integraria com os módulos reais
+    alert(`Importados: ${result.characters?.length || 0} personagens, ${result.chapters?.length || 0} capítulos`);
+  };
+
   return (
-    <div className="flex items-center justify-center h-full text-[var(--color-text-muted)]">
-      <div className="text-center">
-        <span className="text-6xl block mb-4">📚</span>
-        <h3 className="text-lg font-medium text-[var(--color-text)] mb-2">
-          Seus Projetos
-        </h3>
-        <p className="text-sm">
-          Lista de projetos em desenvolvimento...
-        </p>
+    <div className="flex flex-col h-full">
+      {/* Header */}
+      <header className="flex items-center justify-between px-6 py-4 border-b border-[var(--color-border)]">
+        <div>
+          <h1 className="text-lg font-semibold text-[var(--color-text)]">Seus Projetos</h1>
+          <p className="text-xs text-[var(--color-text-muted)]">Gerencie seus projetos e importe documentos</p>
+        </div>
+        <button
+          onClick={() => setIsImportOpen(true)}
+          className="flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-white rounded-lg text-sm font-medium hover:bg-[var(--color-primary-hover)] transition-colors"
+        >
+          <Upload className="w-4 h-4" />
+          Importar Documento
+        </button>
+      </header>
+
+      {/* Content */}
+      <div className="flex-1 flex items-center justify-center text-[var(--color-text-muted)]">
+        <div className="text-center">
+          <span className="text-6xl block mb-4">📚</span>
+          <h3 className="text-lg font-medium text-[var(--color-text)] mb-2">
+            {lastImport ? 'Importação Realizada!' : 'Nenhum Projeto Ainda'}
+          </h3>
+          <p className="text-sm">
+            {lastImport 
+              ? `Importados: ${lastImport.characters?.length || 0} personagens, ${lastImport.chapters?.length || 0} capítulos`
+              : 'Importe seu primeiro documento para começar'}
+          </p>
+        </div>
       </div>
+
+      {/* Import Modal */}
+      <ImportModal
+        isOpen={isImportOpen}
+        onClose={() => setIsImportOpen(false)}
+        onImportComplete={handleImportComplete}
+      />
     </div>
   );
 }
